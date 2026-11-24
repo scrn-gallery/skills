@@ -219,7 +219,8 @@ class Report:
 
     def finding(self, fd, n, total):
         c, dr, links = self.new(n, total)
-        LW = 660; y = 170
+        three = len(fd.get("screens", [])) >= 3 and not fd.get("callouts")
+        LW = 540 if three else 660; y = 170   # 3 screens: narrower text so the screens stay large
         y += self.chip(c, dr, M, y, fd["app"], fd.get("tail")) + 40
         y = self.text(dr, M, y, fd["title"], self.f("semibold", 54), TEXT, LW, 58) + 20
         y = self.text(dr, M, y, fd.get("body", ""), self.f("regular", 30), TEXT, LW, 39) + 34
@@ -233,11 +234,11 @@ class Report:
         if fd.get("link") and self.pdf:
             self.button(c, dr, M, max(y, H - 170), fd["link"].get("text", "Открыть в SCRN"), fd["link"]["url"], links)
         # screens
-        scr = fd.get("screens", [])[:3]; x0 = M + LW + 70; aw = W - M - x0; top = 170; ah = H - 90 - top
+        scr = fd.get("screens", [])[:3]; x0 = M + LW + (60 if three else 70); aw = W - M - x0; top = 170; ah = H - 90 - top
         if fd.get("callouts"):
             self.callouts(c, dr, fd, x0, aw, top, ah)
         elif scr:
-            gap = 32; sw = int((aw - gap * (len(scr) - 1)) / len(scr))
+            gap = 28 if three else 32; sw = int((aw - gap * (len(scr) - 1)) / len(scr))
             ims = [prep_any(s) for s in scr]
             # fit by height: label row 56 px
             for k, (s, im) in enumerate(zip(scr, ims)):
