@@ -1,39 +1,55 @@
 # Скиллы Screen Gallery
 
-### ⬇️ [Скачать scrn-flow-compare.zip](https://github.com/scrn-gallery/skills/releases/latest/download/scrn-flow-compare.zip)
-
-Это всё, что нужно для claude.ai: файл загружается в настройках, в разделе навыков (skills). Зелёная кнопка «Code» → «Download ZIP» скачивает весь проект — для загрузки в Claude она не подходит.
-
-Скиллы для ИИ-агентов — Claude, Codex и других, кто понимает формат `SKILL.md`. Работают с каталогом реальных сценариев мобильных приложений [Screen Gallery](https://scrn.gallery).
+Скиллы для ИИ-агентов — Codex, Claude и других. Работают с каталогом реальных сценариев мобильных приложений [Screen Gallery](https://scrn.gallery).
 
 | Скилл | Что делает |
 |---|---|
 | [scrn-flow-compare](skills/scrn-flow-compare) | Сравнивает сценарии: одно приложение в разных версиях, несколько приложений на одной задаче или срез рынка. Результат — отчёт в чате, PDF, страницы картинками или карусель |
 
-## Что нужно
-1. Подписка Screen Gallery и подключённый к агенту MCP-сервер Screen Gallery: `https://scrn.gallery/mcp`.
-2. Агент, который умеет запускать код (Python 3 + Pillow, для PDF ещё reportlab). Без кода будет отчёт в чате.
-3. Доступ из этой среды к scrn.gallery — оттуда скачиваются экраны.
+Нужна подписка Screen Gallery.
 
-## Установка
+## Быстрая установка — для любого агента
 
-**Claude (claude.ai, десктоп).** [Скачайте scrn-flow-compare.zip](https://github.com/scrn-gallery/skills/releases/latest/download/scrn-flow-compare.zip) и загрузите в настройках, в разделе навыков (skills). Коннектор Screen Gallery подключается там же, в коннекторах.
+Скопируйте и отправьте своему агенту (Codex, Claude Code, Cursor…):
 
-**Claude Code**
+```
+Установи скилл scrn-flow-compare из https://github.com/scrn-gallery/skills и подключи MCP-сервер Screen Gallery https://scrn.gallery/mcp
+```
+
+Агент сам скачает скилл и пропишет сервер. Когда откроется браузер — войдите в аккаунт Screen Gallery. Потом перезапустите агента.
+
+## Пошагово
+
+### Codex — приложение, CLI, IDE
+В терминале:
+```
+codex mcp add scrn --url https://scrn.gallery/mcp
+codex mcp login scrn
+npx skills add scrn-gallery/skills --skill scrn-flow-compare -a codex
+```
+Первая команда подключает Screen Gallery, вторая открывает вход в аккаунт, третья ставит скилл в `~/.codex/skills/`. Перезапустите Codex.
+
+### Claude Code
 ```
 claude mcp add --transport http scrn https://scrn.gallery/mcp
+```
+Затем в самом Claude Code:
+```
 /plugin marketplace add scrn-gallery/skills
 /plugin install scrn-flow-compare@screen-gallery
 ```
 
-**Codex**
+### Cursor, Gemini CLI и другие
 ```
-codex mcp add scrn --url https://scrn.gallery/mcp
-codex mcp login scrn
 npx skills add scrn-gallery/skills --skill scrn-flow-compare
 ```
+Установщик сам спросит, в какого агента положить скилл. MCP-сервер `https://scrn.gallery/mcp` подключается в настройках MCP вашего агента.
 
-**Любой другой агент.** `npx skills add scrn-gallery/skills` сам найдёт, куда положить скилл (Cursor, Gemini CLI и др.). Или скачайте папку скилла и дайте агенту прочитать `SKILL.md` — это обычная инструкция, скрипты лежат в `scripts/`.
+### claude.ai и Claude Desktop — без терминала
+1. Подключите Screen Gallery в настройках коннекторов.
+2. [Скачайте scrn-flow-compare.zip](https://github.com/scrn-gallery/skills/releases/latest/download/scrn-flow-compare.zip) и загрузите в настройках, в разделе навыков (skills).
+
+Зелёная кнопка «Code» → «Download ZIP» скачивает весь проект: скилл там лежит глубоко внутри, и Claude его не найдёт. Нужен именно файл по ссылке выше.
 
 ## Как пользоваться
 Опишите задачу словами:
@@ -41,6 +57,8 @@ npx skills add scrn-gallery/skills --skill scrn-flow-compare
 > Найди в Screen Gallery все сценарии с рецептами у доставок продуктов. Сравни по шагам, у кого какая фишка, и собери PDF.
 
 Дальше правьте как с дизайнером: «убери цены», «покажи кнопку в кадре», «переделай вывод».
+
+Для PDF и картинок агенту нужен Python с Pillow (и reportlab для PDF) и доступ к scrn.gallery — агенты с терминалом обычно справляются сами. Без кода получится отчёт в чате.
 
 ## Лицензия
 Код — MIT. Шрифт Inter — SIL Open Font License (`assets/fonts/OFL.txt`). Экраны приложений принадлежат их владельцам и берутся из каталога Screen Gallery по подписке.
