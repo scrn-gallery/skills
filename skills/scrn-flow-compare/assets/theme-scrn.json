@@ -1,0 +1,27 @@
+{
+  "name": "scrn",
+  "size": [1080, 1350],
+  "margin": 64,
+  "colors": {
+    "bg": "#050505",
+    "card": "#1D1E20",
+    "line": "#3B3C40",
+    "text": "#F4F4F6",
+    "muted": "#B5B6BA",
+    "chip_text": "#EAEAEB",
+    "accent": "#FA6200",
+    "accent_text": "#F4F4F6",
+    "neutral_pill": "#3B3C40",
+    "cta_bg": "#F4F4F6",
+    "cta_text": "#050505",
+    "cta_muted": "#3B3C40"
+  },
+  "fonts": {
+    "regular": "assets/fonts/Inter-Regular.otf",
+    "medium": "assets/fonts/Inter-Medium.otf",
+    "semibold": "assets/fonts/Inter-SemiBold.otf"
+  },
+  "logo": "assets/scrn-logo.png",
+  "cta": {"title": "scrn.gallery", "subtitle": "Все экраны обеих версий"},
+  "credit": "Экраны: scrn.gallery"
+}

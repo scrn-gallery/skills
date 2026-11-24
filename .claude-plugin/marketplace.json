@@ -1,0 +1,14 @@
+{
+  "name": "screen-gallery",
+  "owner": {"name": "Screen Gallery", "url": "https://scrn.gallery"},
+  "metadata": {"description": "Скиллы для работы с каталогом сценариев мобильных приложений Screen Gallery"},
+  "plugins": [
+    {
+      "name": "scrn-flow-compare",
+      "description": "Сравнение сценариев из Screen Gallery: версии, приложения, срез рынка → отчёт, PDF, картинки, карусель",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/scrn-flow-compare"]
+    }
+  ]
+}

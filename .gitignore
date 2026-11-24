@@ -1,0 +1,4 @@
+__pycache__/
+.scrn_cache/
+.DS_Store
+*.zip
