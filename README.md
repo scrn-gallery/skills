@@ -1,5 +1,9 @@
 # Скиллы Screen Gallery
 
+### ⬇️ [Скачать scrn-flow-compare.zip](https://github.com/scrn-gallery/skills/releases/latest/download/scrn-flow-compare.zip)
+
+Это всё, что нужно для claude.ai: файл загружается в настройках, в разделе навыков (skills). Зелёная кнопка «Code» → «Download ZIP» скачивает весь проект — для загрузки в Claude она не подходит.
+
 Скиллы для ИИ-агентов — Claude, Codex и других, кто понимает формат `SKILL.md`. Работают с каталогом реальных сценариев мобильных приложений [Screen Gallery](https://scrn.gallery).
 
 | Скилл | Что делает |
@@ -13,7 +17,7 @@
 
 ## Установка
 
-**Claude (claude.ai, десктоп).** Скачайте `scrn-flow-compare.zip` в [Releases](https://github.com/scrn-gallery/skills/releases/latest) и загрузите в настройках, в разделе навыков (skills). Коннектор Screen Gallery подключается там же, в коннекторах.
+**Claude (claude.ai, десктоп).** [Скачайте scrn-flow-compare.zip](https://github.com/scrn-gallery/skills/releases/latest/download/scrn-flow-compare.zip) и загрузите в настройках, в разделе навыков (skills). Коннектор Screen Gallery подключается там же, в коннекторах.
 
 **Claude Code**
 ```
